@@ -19,24 +19,92 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: #e2e8f0;
+            background: #0f1419;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-mode {
             color: #1a2332;
             background: #f5f5f5;
         }
 
+        /* Botão de Toggle Dark/Light Mode */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c4383a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+            z-index: 1001;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 12px 35px rgba(231, 76, 60, 0.6);
+        }
+
+        .theme-toggle svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(20deg);
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        .theme-toggle .moon-icon {
+            display: block;
+        }
+
+        body.light-mode .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        body.light-mode .theme-toggle .moon-icon {
+            display: none;
+        }
+
         /* Header com animação de reveal */
         header {
-            background: rgba(250, 250, 250, 0.98);
+            background: rgba(15, 20, 25, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(196, 56, 58, 0.2);
+        }
+
+        body.light-mode header {
+            background: rgba(250, 250, 250, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(196, 56, 58, 0.1);
         }
 
         header.scrolled {
+            box-shadow: 0 2px 30px rgba(0,0,0,0.7);
+        }
+
+        body.light-mode header.scrolled {
             box-shadow: 0 2px 30px rgba(0,0,0,0.12);
         }
 
@@ -68,7 +136,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(196, 56, 58, 0.2));
+            filter: drop-shadow(0 2px 8px rgba(196, 56, 58, 0.5));
         }
 
         .logo-container:hover .logo-symbol {
@@ -78,11 +146,20 @@
         .logo-text {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #1a2332;
+            color: #f7fafc;
             letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        body.light-mode .logo-text {
+            color: #1a2332;
         }
 
         .logo-text .mol {
+            color: #e74c3c;
+        }
+
+        body.light-mode .logo-text .mol {
             color: #c4383a;
         }
 
@@ -93,13 +170,17 @@
         }
 
         nav a {
-            color: #1a2332;
+            color: #cbd5e0;
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
             transition: all 0.3s;
             position: relative;
             padding: 0.5rem 0;
+        }
+
+        body.light-mode nav a {
+            color: #1a2332;
         }
 
         nav a::after {
@@ -110,12 +191,12 @@
             transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #c4383a 0%, #d94d4f 100%);
+            background: linear-gradient(90deg, #e74c3c 0%, #c4383a 100%);
             transition: width 0.3s ease;
         }
 
         nav a:hover {
-            color: #c4383a;
+            color: #e74c3c;
         }
 
         nav a:hover::after {
@@ -125,9 +206,14 @@
         /* Hero com efeito de gradiente animado */
         .hero {
             margin-top: 85px;
-            background: linear-gradient(135deg, #f0f0f0 0%, #fafafa 50%, #f8f5f5 100%);
+            background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 50%, #1a1520 100%);
             position: relative;
             overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        body.light-mode .hero {
+            background: linear-gradient(135deg, #f0f0f0 0%, #fafafa 50%, #f8f5f5 100%);
         }
 
         .hero::before {
@@ -137,8 +223,12 @@
             right: -20%;
             width: 80%;
             height: 150%;
-            background: radial-gradient(circle, rgba(196, 56, 58, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(196, 56, 58, 0.15) 0%, transparent 70%);
             animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        body.light-mode .hero::before {
+            background: radial-gradient(circle, rgba(196, 56, 58, 0.05) 0%, transparent 70%);
         }
 
         @keyframes pulseGlow {
@@ -160,14 +250,14 @@
 
         .hero-content h1 {
             font-size: 3.8rem;
-            color: #1a2332;
+            color: #f7fafc;
             margin-bottom: 1.5rem;
             line-height: 1.15;
             font-weight: 700;
         }
 
         .hero-content .highlight {
-            color: #c4383a;
+            color: #e74c3c;
             display: block;
             position: relative;
         }
@@ -179,12 +269,12 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, #c4383a 0%, transparent 100%);
+            background: linear-gradient(90deg, #e74c3c 0%, transparent 100%);
         }
 
         .hero-content p {
             font-size: 1.25rem;
-            color: #4a5568;
+            color: #a0aec0;
             margin-bottom: 2.5rem;
             line-height: 1.9;
             max-width: 600px;
@@ -194,7 +284,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
-            background: linear-gradient(135deg, #c4383a 0%, #d94d4f 100%);
+            background: linear-gradient(135deg, #e74c3c 0%, #c4383a 100%);
             color: white;
             padding: 1.3rem 3rem;
             text-decoration: none;
@@ -202,7 +292,7 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(196, 56, 58, 0.25);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -224,7 +314,7 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(196, 56, 58, 0.35);
+            box-shadow: 0 12px 35px rgba(231, 76, 60, 0.5);
         }
 
         .hero-image {
@@ -240,14 +330,14 @@
             transform: translate(-50%, -50%);
             width: 120%;
             height: 120%;
-            background: radial-gradient(circle, rgba(196, 56, 58, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.2) 0%, transparent 70%);
             z-index: 0;
         }
 
         .hero-image img {
             max-width: 100%;
             height: auto;
-            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
             position: relative;
             z-index: 1;
             animation: floatImage 6s ease-in-out infinite;
@@ -272,7 +362,7 @@
 
         /* About Section com design moderno */
         .about {
-            background: #ececec;
+            background: #161b22;
             padding: 7rem 3rem;
             position: relative;
         }
@@ -284,7 +374,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #c4383a 0%, #d94d4f 50%, transparent 100%);
+            background: linear-gradient(90deg, #e74c3c 0%, #c4383a 50%, transparent 100%);
         }
 
         .about-container {
@@ -295,19 +385,27 @@
         .section-label {
             display: inline-block;
             padding: 0.5rem 1.5rem;
-            background: rgba(196, 56, 58, 0.1);
-            color: #c4383a;
+            background: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
             border-radius: 30px;
             font-weight: 600;
             font-size: 0.9rem;
             letter-spacing: 1px;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .section-label {
+            background: rgba(196, 56, 58, 0.1);
+            color: #c4383a;
+            border: 1px solid rgba(196, 56, 58, 0.2);
         }
 
         .section-title {
             font-size: 3rem;
-            color: #1a2332;
+            color: #f7fafc;
             margin-bottom: 1rem;
             text-align: center;
             font-weight: 700;
@@ -316,7 +414,7 @@
 
         .section-subtitle {
             font-size: 1.3rem;
-            color: #c4383a;
+            color: #e74c3c;
             text-align: center;
             margin-bottom: 3rem;
             font-weight: 600;
@@ -324,7 +422,7 @@
 
         .about-text {
             font-size: 1.2rem;
-            color: #4a5568;
+            color: #a0aec0;
             max-width: 950px;
             margin: 0 auto;
             text-align: center;
@@ -334,7 +432,7 @@
         /* Products com cards interativos criativos */
         .products {
             padding: 7rem 3rem;
-            background: linear-gradient(180deg, #fafafa 0%, #ececec 100%);
+            background: linear-gradient(180deg, #0f1419 0%, #161b22 100%);
         }
 
         .products-container {
@@ -350,12 +448,12 @@
         }
 
         .product-card {
-            background: #fafafa;
-            border: 1px solid #e2e8f0;
+            background: #1a1f2e;
+            border: 1px solid rgba(231, 76, 60, 0.2);
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             position: relative;
         }
 
@@ -366,7 +464,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, #c4383a 0%, #d94d4f 100%);
+            background: linear-gradient(90deg, #e74c3c 0%, #c4383a 100%);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
@@ -374,6 +472,11 @@
 
         .product-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(231, 76, 60, 0.3);
+            border-color: #e74c3c;
+        }
+
+        body.light-mode .product-card:hover {
             box-shadow: 0 20px 50px rgba(0,0,0,0.15);
             border-color: #c4383a;
         }
@@ -385,7 +488,7 @@
         .product-card-header {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #e8e8e8 0%, #f0f0f0 100%);
+            background: linear-gradient(135deg, #24292f 0%, #1a1f2e 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -400,8 +503,12 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 40%, rgba(196, 56, 58, 0.1) 50%, transparent 60%);
+            background: linear-gradient(45deg, transparent 40%, rgba(231, 76, 60, 0.15) 50%, transparent 60%);
             transition: transform 0.6s;
+        }
+
+        body.light-mode .product-card-header::after {
+            background: linear-gradient(45deg, transparent 40%, rgba(196, 56, 58, 0.1) 50%, transparent 60%);
         }
 
         .product-card:hover .product-card-header::after {
@@ -411,9 +518,14 @@
         .product-number {
             font-size: 6rem;
             font-weight: 700;
-            color: rgba(196, 56, 58, 0.15);
+            color: rgba(231, 76, 60, 0.25);
             position: relative;
             z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        body.light-mode .product-number {
+            color: rgba(196, 56, 58, 0.15);
         }
 
         .product-card-content {
@@ -422,20 +534,20 @@
 
         .product-card-content h3 {
             font-size: 1.6rem;
-            color: #1a2332;
+            color: #f7fafc;
             margin-bottom: 1.2rem;
             font-weight: 600;
         }
 
         .product-card-content p {
-            color: #4a5568;
+            color: #a0aec0;
             line-height: 1.8;
             font-size: 1.05rem;
         }
 
         /* Benefits com design limpo e ícones SVG substituídos por texto */
         .benefits {
-            background: #fafafa;
+            background: #161b22;
             padding: 7rem 3rem;
             position: relative;
         }
@@ -455,10 +567,10 @@
         .benefit-item {
             text-align: center;
             padding: 2.5rem 1.5rem;
-            background: #f0f0f0;
+            background: #1a1f2e;
             border-radius: 10px;
             transition: all 0.3s;
-            border: 2px solid transparent;
+            border: 2px solid rgba(231, 76, 60, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -470,16 +582,20 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(196, 56, 58, 0.05) 0%, transparent 100%);
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, transparent 100%);
             opacity: 0;
             transition: opacity 0.3s;
         }
 
+        body.light-mode .benefit-item::before {
+            background: linear-gradient(135deg, rgba(196, 56, 58, 0.05) 0%, transparent 100%);
+        }
+
         .benefit-item:hover {
             transform: translateY(-8px);
-            border-color: #c4383a;
-            background: #fafafa;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: #e74c3c;
+            background: #24292f;
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.3);
         }
 
         .benefit-item:hover::before {
@@ -489,15 +605,20 @@
         .benefit-number {
             font-size: 3rem;
             font-weight: 700;
-            color: #c4383a;
+            color: #e74c3c;
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        body.light-mode .benefit-number {
+            color: #c4383a;
         }
 
         .benefit-item h3 {
             font-size: 1.3rem;
-            color: #1a2332;
+            color: #f7fafc;
             margin-bottom: 1rem;
             font-weight: 600;
             position: relative;
@@ -505,7 +626,7 @@
         }
 
         .benefit-item p {
-            color: #4a5568;
+            color: #a0aec0;
             font-size: 1rem;
             line-height: 1.7;
             position: relative;
@@ -514,7 +635,7 @@
 
         /* Technology com layout criativo */
         .technology {
-            background: linear-gradient(135deg, #ececec 0%, #fafafa 100%);
+            background: linear-gradient(135deg, #0f1419 0%, #1a1520 100%);
             padding: 7rem 3rem;
             position: relative;
             overflow: hidden;
@@ -527,6 +648,10 @@
             left: -10%;
             width: 50%;
             height: 150%;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.08) 0%, transparent 70%);
+        }
+
+        body.light-mode .technology::before {
             background: radial-gradient(circle, rgba(196, 56, 58, 0.03) 0%, transparent 70%);
         }
 
@@ -543,14 +668,14 @@
 
         .technology-content h2 {
             font-size: 3rem;
-            color: #1a2332;
+            color: #f7fafc;
             margin-bottom: 2rem;
             font-weight: 700;
             line-height: 1.2;
         }
 
         .technology-content p {
-            color: #4a5568;
+            color: #a0aec0;
             line-height: 2;
             margin-bottom: 2rem;
             font-size: 1.15rem;
@@ -564,9 +689,9 @@
         .tech-features li {
             padding: 1.3rem 0 1.3rem 3rem;
             position: relative;
-            color: #4a5568;
+            color: #a0aec0;
             font-size: 1.1rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid rgba(231, 76, 60, 0.2);
             transition: all 0.3s;
         }
 
@@ -582,7 +707,7 @@
             transform: translateY(-50%);
             width: 20px;
             height: 20px;
-            background: linear-gradient(135deg, #c4383a 0%, #d94d4f 100%);
+            background: linear-gradient(135deg, #e74c3c 0%, #c4383a 100%);
             border-radius: 3px;
             transition: all 0.3s;
         }
@@ -599,7 +724,7 @@
         }
 
         .tech-features li:hover {
-            color: #1a2332;
+            color: #f7fafc;
             padding-left: 3.5rem;
         }
 
@@ -616,12 +741,12 @@
         }
 
         .tech-stat {
-            background: #f5f5f5;
+            background: #1a1f2e;
             padding: 3rem 2rem;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 2px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid rgba(231, 76, 60, 0.2);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -634,11 +759,16 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #c4383a 0%, #d94d4f 100%);
+            background: linear-gradient(90deg, #e74c3c 0%, #c4383a 100%);
         }
 
         .tech-stat:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
+            border-color: #e74c3c;
+        }
+
+        body.light-mode .tech-stat:hover {
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             border-color: #c4383a;
         }
@@ -646,31 +776,37 @@
         .tech-stat-value {
             font-size: 3.5rem;
             font-weight: 700;
-            color: #c4383a;
+            color: #e74c3c;
             margin-bottom: 0.5rem;
             line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        body.light-mode .tech-stat-value {
+            color: #c4383a;
         }
 
         .tech-stat-label {
             font-size: 1.1rem;
-            color: #1a2332;
+            color: #f7fafc;
             font-weight: 600;
         }
 
         .tech-stat-desc {
             font-size: 0.95rem;
-            color: #4a5568;
+            color: #a0aec0;
             margin-top: 0.5rem;
         }
 
         /* CTA Section redesenhada */
         .cta-section {
-            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            background: linear-gradient(135deg, #0a0e14 0%, #1a1f2e 100%);
             color: white;
             padding: 7rem 3rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-top: 2px solid rgba(231, 76, 60, 0.3);
         }
 
         .cta-section::before {
@@ -680,6 +816,12 @@
             left: 0;
             right: 0;
             bottom: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, rgba(231, 76, 60, 0.05) 0px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(0deg, rgba(231, 76, 60, 0.05) 0px, transparent 1px, transparent 40px);
+        }
+
+        body.light-mode .cta-section::before {
             background-image: 
                 repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, transparent 1px, transparent 40px),
                 repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, transparent 1px, transparent 40px);
@@ -696,6 +838,7 @@
             font-size: 3.2rem;
             margin-bottom: 1.5rem;
             font-weight: 700;
+            color: #f7fafc;
         }
 
         .cta-section p {
@@ -703,21 +846,22 @@
             margin-bottom: 3rem;
             opacity: 0.95;
             line-height: 1.8;
+            color: #cbd5e0;
         }
 
         .cta-button-secondary {
             display: inline-flex;
             align-items: center;
             gap: 1rem;
-            background: white;
-            color: #c4383a;
+            background: linear-gradient(135deg, #e74c3c 0%, #c4383a 100%);
+            color: white;
             padding: 1.5rem 4rem;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
             font-size: 1.25rem;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(231, 76, 60, 0.4);
             position: relative;
             overflow: hidden;
             letter-spacing: 0.5px;
@@ -731,7 +875,7 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(196, 56, 58, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
@@ -743,8 +887,7 @@
 
         .cta-button-secondary:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 50px rgba(255, 255, 255, 0.4);
-            background: #ffffff;
+            box-shadow: 0 15px 50px rgba(231, 76, 60, 0.6);
         }
 
         .cta-button-secondary span {
@@ -770,9 +913,10 @@
         /* Footer profissional e moderno */
         footer {
             background: #0a0e14;
-            color: #a0aec0;
+            color: #718096;
             padding: 5rem 3rem 2rem;
             position: relative;
+            border-top: 1px solid rgba(231, 76, 60, 0.2);
         }
 
         .footer-container {
@@ -785,7 +929,7 @@
         }
 
         .footer-section h3 {
-            color: white;
+            color: #f7fafc;
             font-size: 1.3rem;
             margin-bottom: 1.5rem;
             font-weight: 600;
@@ -794,7 +938,7 @@
         .footer-section p {
             line-height: 1.9;
             margin-bottom: 1.5rem;
-            color: #718096;
+            color: #a0aec0;
         }
 
         .footer-links {
@@ -813,7 +957,7 @@
         }
 
         .footer-links a:hover {
-            color: #c4383a;
+            color: #e74c3c;
             padding-left: 5px;
         }
 
@@ -826,7 +970,7 @@
         .social-links a {
             width: 45px;
             height: 45px;
-            background: #1a2332;
+            background: #1a1f2e;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -835,20 +979,27 @@
             text-decoration: none;
             transition: all 0.3s;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            border: 1px solid rgba(231, 76, 60, 0.2);
         }
 
         .social-links a:hover {
-            background: linear-gradient(135deg, #c4383a 0%, #d94d4f 100%);
+            background: linear-gradient(135deg, #e74c3c 0%, #c4383a 100%);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(196, 56, 58, 0.3);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .social-links a svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
         }
 
         .footer-bottom {
             max-width: 1400px;
             margin: 0 auto;
             padding-top: 2.5rem;
-            border-top: 1px solid #1a2332;
+            border-top: 1px solid rgba(231, 76, 60, 0.2);
             text-align: center;
             color: #718096;
         }
@@ -935,6 +1086,16 @@
             </nav>
         </div>
     </header>
+
+    <!-- Botão de Toggle Theme -->
+    <div class="theme-toggle" id="themeToggle">
+        <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z"/>
+        </svg>
+    </div>
 
     <section id="inicio" class="hero">
         <div class="hero-container">
@@ -1097,9 +1258,21 @@
                 <h3>Químicas MOL</h3>
                 <p>Empresa dedicada ao mercado da saúde, especializada no desenvolvimento de soluções de alta tecnologia para o bem-estar através da nanotecnologia.</p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/quimicas_mol/" target="_blank" aria-label="Instagram">IG</a>
-                    <a href="#" aria-label="LinkedIn">LI</a>
-                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="https://www.instagram.com/quimicas_mol/" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
             <div class="footer-section">
@@ -1206,6 +1379,27 @@
 
         document.querySelectorAll('.section-animate').forEach(section => {
             observer.observe(section);
+        });
+
+        // Toggle Dark/Light Mode
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Verificar se há preferência salva
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+        }
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('light-mode');
+            
+            // Salvar preferência
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
         });
     </script>
 </body>
