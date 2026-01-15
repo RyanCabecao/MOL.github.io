@@ -1,1 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Químicas MOL - Inovação e Cuidado</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a2332;
+            background: linear-gradient(135deg, #f5f3ed 0%, #ede9e0 25%, #e8e4d8 50%, #f0ebe3 75%, #f5f3ed 100%);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #c4383a 0%, #d94d4f 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        nav {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        header:hover nav {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        header:hover .logo-text {
+            opacity: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            color: #1a2332;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .highlight {
+            color: #c4383a;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #c4383a 0%, #d94d4f 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(196, 56, 58, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 56, 58, 0.4);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(to right, #f8f6f0 0%, #ffffff 50%, #f8f6f0 100%);
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            color: #1a2332;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #4a5568;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* Products Section */
+        .products {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .products h2 {
+            font-size: 2rem;
+            color: #1a2332;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, #ffffff 0%, #faf8f3 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(26, 35, 50, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(26, 35, 50, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #c4383a 0%, #d94d4f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            color: #1a2332;
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a2332;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .benefits h2 {
+            font-size: 2rem;
+            color: #1a2332;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #c4383a 0%, #d94d4f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+            box-shadow: 0 5px 15px rgba(196, 56, 58, 0.2);
+        }
+
+        .benefit-item h3 {
+            font-size: 1.2rem;
+            color: #1a2332;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-item p {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        /* Technology Section */
+        .technology {
+            background: linear-gradient(to right, #f8f6f0 0%, #ffffff 50%, #f8f6f0 100%);
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .technology-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .technology-content h2 {
+            font-size: 2rem;
+            color: #1a2332;
+            margin-bottom: 1.5rem;
+        }
+
+        .technology-content p {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .tech-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .tech-features li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .tech-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #c4383a;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .technology-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .molecule {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #c4383a 0%, #d94d4f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(196, 56, 58, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .molecule:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .molecule:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button-secondary {
+            display: inline-block;
+            background: white;
+            color: #c4383a;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .technology-container {
+                grid-template-columns: 1fr;
+            }
+
+            .molecule {
+                width: 80px;
+                height: 80px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-text">Químicas MOL</div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Inovação em <span class="highlight">Nanotecnologia</span> para o Cuidado da Saúde</h1>
+            <p>Desenvolvemos soluções de alta tecnologia que unem ciência e cuidado humano para proporcionar mais conforto e qualidade de vida.</p>
+            <a href="#produtos" class="cta-button">Conheça Nossos Produtos</a>
+        </div>
+        <div class="hero-image">
+            <img src="Dr_MOLfoto.png" alt="Dr. MOL - Mascote da Químicas MOL">
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="about-container">
+            <h2>Sobre a Químicas MOL</h2>
+            <p class="about-text">
+                A Químicas MOL é uma empresa dedicada ao mercado da saúde, especializada no desenvolvimento de soluções de alta tecnologia para o bem-estar. Nosso foco principal é a produção de lubrificantes nano estruturados de altíssima qualidade, projetados especificamente para usuários de órteses articulares.
+                <br><br>
+                Além disso, também fabricamos cremes hipoalérgicos de alta performance, voltados para cuidar e prevenir possíveis irritações que podem surgir na pele devido ao uso desses dispositivos. Em resumo: unimos a ciência da nanotecnologia ao cuidado humano para oferecer mais conforto e mobilidade aos pacientes.
+            </p>
+        </div>
+    </section>
+
+    <section id="produtos" class="products">
+        <h2>Nossos Produtos</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon">⚡</div>
+                <h3>Lubrificantes Nano Estruturados</h3>
+                <p>Desenvolvidos com tecnologia de ponta, nossos lubrificantes proporcionam máxima eficiência e durabilidade para órteses articulares, garantindo movimento suave e confortável.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">✨</div>
+                <h3>Cremes Hipoalérgicos</h3>
+                <p>Formulações especiais de alta performance para proteger e cuidar da pele. Previnem irritações causadas pelo uso contínuo de dispositivos ortopédicos.</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🔬</div>
+                <h3>Pesquisa e Desenvolvimento</h3>
+                <p>Investimos constantemente em pesquisa para desenvolver novas soluções que melhorem a qualidade de vida de nossos clientes através da nanotecnologia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <h2>Por Que Escolher a Químicas MOL?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">🦴</div>
+                <h3>Alívio da Dor</h3>
+                <p>Redução significativa do desconforto em articulações com órteses</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🧬</div>
+                <h3>Nanotecnologia</h3>
+                <p>Ciência avançada aplicada ao cuidado humano</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🛡️</div>
+                <h3>Proteção da Pele</h3>
+                <p>Prevenção de irritações e alergias</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🤸</div>
+                <h3>Mobilidade</h3>
+                <p>Mais conforto e liberdade de movimento</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="technology">
+        <div class="technology-container">
+            <div class="technology-content">
+                <h2>Tecnologia Nano Estruturada</h2>
+                <p>Nossa tecnologia exclusiva utiliza nanopartículas especialmente desenvolvidas para proporcionar lubrificação superior e proteção prolongada às articulações de pacientes que utilizam órteses.</p>
+                <ul class="tech-features">
+                    <li>Redução de atrito em até 85%</li>
+                    <li>Fórmulas hipoalergênicas testadas dermatologicamente</li>
+                    <li>Durabilidade superior - proteção de longa duração</li>
+                    <li>Absorção rápida sem deixar resíduos</li>
+                    <li>Desenvolvido com acompanhamento médico especializado</li>
+                </ul>
+            </div>
+            <div class="technology-visual">
+                <div class="molecule">🔬</div>
+                <div class="molecule">⚛️</div>
+                <div class="molecule">🧪</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Melhore Sua Qualidade de Vida</h2>
+        <p>Descubra como nossas soluções podem ajudar você a viver com mais conforto e mobilidade</p>
+        <a href="#contato" class="cta-button-secondary">Entre em Contato</a>
+    </section>
+
+    <footer id="contato">
+        <p><strong>Químicas MOL</strong> - Nanotecnologia e Cuidado</p>
+        <p>© 2026 Químicas MOL. Todos os direitos reservados.</p>
+        <p>Desenvolvendo soluções para o seu bem-estar</p>
+    </footer>
+
+    <script>
+        // Smooth scroll para todos os links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
