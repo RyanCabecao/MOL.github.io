@@ -19,6 +19,7 @@
             --shadow-color: rgba(231, 76, 60, 0.4);
             --gradient-start: #1a1f2e;
             --gradient-end: #0f1419;
+            --product-number-color: rgba(231, 76, 60, 0.2);
         }
 
         :root.light-theme {
@@ -35,6 +36,7 @@
             --shadow-color: rgba(0, 0, 0, 0.1);
             --gradient-start: #f0f0f0;
             --gradient-end: #fafafa;
+            --product-number-color: #c4383a;
         }
 
         html {
@@ -508,7 +510,7 @@
         .product-number {
             font-size: 6rem;
             font-weight: 700;
-            color: var(--border-color);
+            color: var(--product-number-color);
             position: relative;
             z-index: 1;
             transition: color 0.3s ease;
@@ -617,7 +619,7 @@
 
         /* Technology */
         .technology {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 50%, var(--bg-secondary) 100%);
             padding: 7rem 3rem;
             position: relative;
             overflow: hidden;
@@ -632,6 +634,7 @@
             width: 50%;
             height: 150%;
             background: radial-gradient(circle, var(--border-color) 0%, transparent 70%);
+            opacity: 0.5;
         }
 
         .technology-container {
