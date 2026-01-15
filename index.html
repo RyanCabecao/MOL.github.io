@@ -7,6 +7,7 @@
     <style>
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 100px;
         }
 
         * {
@@ -554,42 +555,48 @@
     </footer>
 
     <script>
-        // Aguarda o carregamento completo da página
-        document.addEventListener('DOMContentLoaded', function() {
-            // Seleciona todos os links com âncoras
+        // Função de scroll suave compatível com todos os navegadores
+        function smoothScrollTo(targetPosition, duration) {
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Aplica aos links
+        window.addEventListener('load', function() {
             const links = document.querySelectorAll('a[href^="#"]');
             
-            links.forEach(link => {
+            links.forEach(function(link) {
                 link.addEventListener('click', function(e) {
-                    // Previne o comportamento padrão
                     e.preventDefault();
-                    e.stopPropagation();
                     
-                    // Pega o ID da seção alvo
                     const targetId = this.getAttribute('href');
-                    
-                    // Se for apenas "#", volta ao topo
                     if (targetId === '#') {
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
+                        smoothScrollTo(0, 1000);
                         return;
                     }
                     
-                    // Encontra o elemento alvo
                     const targetElement = document.querySelector(targetId);
-                    
                     if (targetElement) {
-                        // Calcula a posição com offset para o header
-                        const headerHeight = 100;
-                        const targetPosition = targetElement.offsetTop - headerHeight;
-                        
-                        // Faz o scroll suave
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
+                        const targetPosition = targetElement.offsetTop - 100;
+                        smoothScrollTo(targetPosition, 1000);
                     }
                 });
             });
