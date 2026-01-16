@@ -352,414 +352,13 @@
         /* Seções com entrada animada */
         .section-animate {
             opacity: 0;
-            -webkit-transform: translateY(50px);
-            -moz-transform: translateY(50px);
-            -ms-transform: translateY(50px);
-            -o-transform: translateY(50px);
-            transform: translateY(50px);
-            -webkit-transition: opacity 1s ease-out, -webkit-transform 1s ease-out;
-            -moz-transition: opacity 1s ease-out, -moz-transform 1s ease-out;
-            -ms-transition: opacity 1s ease-out, -ms-transform 1s ease-out;
-            -o-transition: opacity 1s ease-out, -o-transform 1s ease-out;
-            transition: opacity 1s ease-out, transform 1s ease-out;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
 
         .section-animate.visible {
             opacity: 1;
-            -webkit-transform: translateY(0);
-            -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-            -o-transform: translateY(0);
             transform: translateY(0);
-        }
-
-        /* Animações específicas para diferentes elementos */
-        .product-card {
-            opacity: 0;
-            -webkit-transform: translateY(30px);
-            -moz-transform: translateY(30px);
-            -ms-transform: translateY(30px);
-            -o-transform: translateY(30px);
-            transform: translateY(30px);
-            -webkit-transition: opacity 0.6s ease-out, -webkit-transform 0.6s ease-out, box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            -moz-transition: opacity 0.6s ease-out, -moz-transform 0.6s ease-out, box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            -ms-transition: opacity 0.6s ease-out, -ms-transform 0.6s ease-out, box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            -o-transition: opacity 0.6s ease-out, -o-transform 0.6s ease-out, box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .section-animate.visible .product-card {
-            opacity: 1;
-            -webkit-transform: translateY(0);
-            -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-            -o-transform: translateY(0);
-            transform: translateY(0);
-        }
-
-        .section-animate.visible .product-card:nth-child(1) {
-            -webkit-transition-delay: 0.1s;
-            -moz-transition-delay: 0.1s;
-            -ms-transition-delay: 0.1s;
-            -o-transition-delay: 0.1s;
-            transition-delay: 0.1s;
-        }
-
-        .section-animate.visible .product-card:nth-child(2) {
-            -webkit-transition-delay: 0.2s;
-            -moz-transition-delay: 0.2s;
-            -ms-transition-delay: 0.2s;
-            -o-transition-delay: 0.2s;
-            transition-delay: 0.2s;
-        }
-
-        .section-animate.visible .product-card:nth-child(3) {
-            -webkit-transition-delay: 0.3s;
-            -moz-transition-delay: 0.3s;
-            -ms-transition-delay: 0.3s;
-            -o-transition-delay: 0.3s;
-            transition-delay: 0.3s;
-        }
-
-        .benefit-item {
-            opacity: 0;
-            -webkit-transform: translateY(30px) scale(0.95);
-            -moz-transform: translateY(30px) scale(0.95);
-            -ms-transform: translateY(30px) scale(0.95);
-            -o-transform: translateY(30px) scale(0.95);
-            transform: translateY(30px) scale(0.95);
-            -webkit-transition: opacity 0.6s ease-out, -webkit-transform 0.6s ease-out, border-color 0.3s, box-shadow 0.3s;
-            -moz-transition: opacity 0.6s ease-out, -moz-transform 0.6s ease-out, border-color 0.3s, box-shadow 0.3s;
-            -ms-transition: opacity 0.6s ease-out, -ms-transform 0.6s ease-out, border-color 0.3s, box-shadow 0.3s;
-            -o-transition: opacity 0.6s ease-out, -o-transform 0.6s ease-out, border-color 0.3s, box-shadow 0.3s;
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .section-animate.visible .benefit-item {
-            opacity: 1;
-            -webkit-transform: translateY(0) scale(1);
-            -moz-transform: translateY(0) scale(1);
-            -ms-transform: translateY(0) scale(1);
-            -o-transform: translateY(0) scale(1);
-            transform: translateY(0) scale(1);
-        }
-
-        .section-animate.visible .benefit-item:nth-child(1) {
-            -webkit-transition-delay: 0.1s;
-            -moz-transition-delay: 0.1s;
-            -ms-transition-delay: 0.1s;
-            -o-transition-delay: 0.1s;
-            transition-delay: 0.1s;
-        }
-
-        .section-animate.visible .benefit-item:nth-child(2) {
-            -webkit-transition-delay: 0.2s;
-            -moz-transition-delay: 0.2s;
-            -ms-transition-delay: 0.2s;
-            -o-transition-delay: 0.2s;
-            transition-delay: 0.2s;
-        }
-
-        .section-animate.visible .benefit-item:nth-child(3) {
-            -webkit-transition-delay: 0.3s;
-            -moz-transition-delay: 0.3s;
-            -ms-transition-delay: 0.3s;
-            -o-transition-delay: 0.3s;
-            transition-delay: 0.3s;
-        }
-
-        .section-animate.visible .benefit-item:nth-child(4) {
-            -webkit-transition-delay: 0.4s;
-            -moz-transition-delay: 0.4s;
-            -ms-transition-delay: 0.4s;
-            -o-transition-delay: 0.4s;
-            transition-delay: 0.4s;
-        }
-
-        .tech-stat {
-            opacity: 0;
-            -webkit-transform: translateY(30px) scale(0.9);
-            -moz-transform: translateY(30px) scale(0.9);
-            -ms-transform: translateY(30px) scale(0.9);
-            -o-transform: translateY(30px) scale(0.9);
-            transform: translateY(30px) scale(0.9);
-            -webkit-transition: opacity 0.7s ease-out, -webkit-transform 0.7s ease-out, border-color 0.3s, box-shadow 0.3s;
-            -moz-transition: opacity 0.7s ease-out, -moz-transform 0.7s ease-out, border-color 0.3s, box-shadow 0.3s;
-            -ms-transition: opacity 0.7s ease-out, -ms-transform 0.7s ease-out, border-color 0.3s, box-shadow 0.3s;
-            -o-transition: opacity 0.7s ease-out, -o-transform 0.7s ease-out, border-color 0.3s, box-shadow 0.3s;
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out, border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .section-animate.visible .tech-stat {
-            opacity: 1;
-            -webkit-transform: translateY(0) scale(1);
-            -moz-transform: translateY(0) scale(1);
-            -ms-transform: translateY(0) scale(1);
-            -o-transform: translateY(0) scale(1);
-            transform: translateY(0) scale(1);
-        }
-
-        .section-animate.visible .tech-stat:nth-child(1) {
-            -webkit-transition-delay: 0.1s;
-            -moz-transition-delay: 0.1s;
-            -ms-transition-delay: 0.1s;
-            -o-transition-delay: 0.1s;
-            transition-delay: 0.1s;
-        }
-
-        .section-animate.visible .tech-stat:nth-child(2) {
-            -webkit-transition-delay: 0.2s;
-            -moz-transition-delay: 0.2s;
-            -ms-transition-delay: 0.2s;
-            -o-transition-delay: 0.2s;
-            transition-delay: 0.2s;
-        }
-
-        .section-animate.visible .tech-stat:nth-child(3) {
-            -webkit-transition-delay: 0.3s;
-            -moz-transition-delay: 0.3s;
-            -ms-transition-delay: 0.3s;
-            -o-transition-delay: 0.3s;
-            transition-delay: 0.3s;
-        }
-
-        .section-animate.visible .tech-stat:nth-child(4) {
-            -webkit-transition-delay: 0.4s;
-            -moz-transition-delay: 0.4s;
-            -ms-transition-delay: 0.4s;
-            -o-transition-delay: 0.4s;
-            transition-delay: 0.4s;
-        }
-
-        .section-label {
-            opacity: 0;
-            -webkit-transform: translateY(20px);
-            -moz-transform: translateY(20px);
-            -ms-transform: translateY(20px);
-            -o-transform: translateY(20px);
-            transform: translateY(20px);
-            -webkit-transition: opacity 0.6s ease-out, -webkit-transform 0.6s ease-out, all 0.3s ease;
-            -moz-transition: opacity 0.6s ease-out, -moz-transform 0.6s ease-out, all 0.3s ease;
-            -ms-transition: opacity 0.6s ease-out, -ms-transform 0.6s ease-out, all 0.3s ease;
-            -o-transition: opacity 0.6s ease-out, -o-transform 0.6s ease-out, all 0.3s ease;
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out, all 0.3s ease;
-        }
-
-        .section-animate.visible .section-label {
-            opacity: 1;
-            -webkit-transform: translateY(0);
-            -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-            -o-transform: translateY(0);
-            transform: translateY(0);
-            -webkit-transition-delay: 0s;
-            -moz-transition-delay: 0s;
-            -ms-transition-delay: 0s;
-            -o-transition-delay: 0s;
-            transition-delay: 0s;
-        }
-
-        .section-title {
-            opacity: 0;
-            -webkit-transform: translateY(20px);
-            -moz-transform: translateY(20px);
-            -ms-transform: translateY(20px);
-            -o-transform: translateY(20px);
-            transform: translateY(20px);
-            -webkit-transition: opacity 0.7s ease-out, -webkit-transform 0.7s ease-out, color 0.3s ease;
-            -moz-transition: opacity 0.7s ease-out, -moz-transform 0.7s ease-out, color 0.3s ease;
-            -ms-transition: opacity 0.7s ease-out, -ms-transform 0.7s ease-out, color 0.3s ease;
-            -o-transition: opacity 0.7s ease-out, -o-transform 0.7s ease-out, color 0.3s ease;
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out, color 0.3s ease;
-        }
-
-        .section-animate.visible .section-title {
-            opacity: 1;
-            -webkit-transform: translateY(0);
-            -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-            -o-transform: translateY(0);
-            transform: translateY(0);
-            -webkit-transition-delay: 0.1s;
-            -moz-transition-delay: 0.1s;
-            -ms-transition-delay: 0.1s;
-            -o-transition-delay: 0.1s;
-            transition-delay: 0.1s;
-        }
-
-        .section-subtitle {
-            opacity: 0;
-            -webkit-transform: translateY(20px);
-            -moz-transform: translateY(20px);
-            -ms-transform: translateY(20px);
-            -o-transform: translateY(20px);
-            transform: translateY(20px);
-            -webkit-transition: opacity 0.8s ease-out, -webkit-transform 0.8s ease-out, color 0.3s ease;
-            -moz-transition: opacity 0.8s ease-out, -moz-transform 0.8s ease-out, color 0.3s ease;
-            -ms-transition: opacity 0.8s ease-out, -ms-transform 0.8s ease-out, color 0.3s ease;
-            -o-transition: opacity 0.8s ease-out, -o-transform 0.8s ease-out, color 0.3s ease;
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out, color 0.3s ease;
-        }
-
-        .section-animate.visible .section-subtitle {
-            opacity: 1;
-            -webkit-transform: translateY(0);
-            -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-            -o-transform: translateY(0);
-            transform: translateY(0);
-            -webkit-transition-delay: 0.2s;
-            -moz-transition-delay: 0.2s;
-            -ms-transition-delay: 0.2s;
-            -o-transition-delay: 0.2s;
-            transition-delay: 0.2s;
-        }
-
-        .about-text {
-            opacity: 0;
-            -webkit-transform: translateY(20px);
-            -moz-transform: translateY(20px);
-            -ms-transform: translateY(20px);
-            -o-transform: translateY(20px);
-            transform: translateY(20px);
-            -webkit-transition: opacity 0.9s ease-out, -webkit-transform 0.9s ease-out, color 0.3s ease;
-            -moz-transition: opacity 0.9s ease-out, -moz-transform 0.9s ease-out, color 0.3s ease;
-            -ms-transition: opacity 0.9s ease-out, -ms-transform 0.9s ease-out, color 0.3s ease;
-            -o-transition: opacity 0.9s ease-out, -o-transform 0.9s ease-out, color 0.3s ease;
-            transition: opacity 0.9s ease-out, transform 0.9s ease-out, color 0.3s ease;
-        }
-
-        .section-animate.visible .about-text {
-            opacity: 1;
-            -webkit-transform: translateY(0);
-            -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-            -o-transform: translateY(0);
-            transform: translateY(0);
-            -webkit-transition-delay: 0.3s;
-            -moz-transition-delay: 0.3s;
-            -ms-transition-delay: 0.3s;
-            -o-transition-delay: 0.3s;
-            transition-delay: 0.3s;
-        }
-
-        .technology-content {
-            opacity: 0;
-            -webkit-transform: translateX(-50px);
-            -moz-transform: translateX(-50px);
-            -ms-transform: translateX(-50px);
-            -o-transform: translateX(-50px);
-            transform: translateX(-50px);
-            -webkit-transition: opacity 1s ease-out, -webkit-transform 1s ease-out;
-            -moz-transition: opacity 1s ease-out, -moz-transform 1s ease-out;
-            -ms-transition: opacity 1s ease-out, -ms-transform 1s ease-out;
-            -o-transition: opacity 1s ease-out, -o-transform 1s ease-out;
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .section-animate.visible .technology-content {
-            opacity: 1;
-            -webkit-transform: translateX(0);
-            -moz-transform: translateX(0);
-            -ms-transform: translateX(0);
-            -o-transform: translateX(0);
-            transform: translateX(0);
-            -webkit-transition-delay: 0.2s;
-            -moz-transition-delay: 0.2s;
-            -ms-transition-delay: 0.2s;
-            -o-transition-delay: 0.2s;
-            transition-delay: 0.2s;
-        }
-
-        .technology-visual {
-            opacity: 0;
-            -webkit-transform: translateX(50px);
-            -moz-transform: translateX(50px);
-            -ms-transform: translateX(50px);
-            -o-transform: translateX(50px);
-            transform: translateX(50px);
-            -webkit-transition: opacity 1s ease-out, -webkit-transform 1s ease-out;
-            -moz-transition: opacity 1s ease-out, -moz-transform 1s ease-out;
-            -ms-transition: opacity 1s ease-out, -ms-transform 1s ease-out;
-            -o-transition: opacity 1s ease-out, -o-transform 1s ease-out;
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .section-animate.visible .technology-visual {
-            opacity: 1;
-            -webkit-transform: translateX(0);
-            -moz-transform: translateX(0);
-            -ms-transform: translateX(0);
-            -o-transform: translateX(0);
-            transform: translateX(0);
-            -webkit-transition-delay: 0.3s;
-            -moz-transition-delay: 0.3s;
-            -ms-transition-delay: 0.3s;
-            -o-transition-delay: 0.3s;
-            transition-delay: 0.3s;
-        }
-
-        .tech-features li {
-            opacity: 0;
-            -webkit-transform: translateX(-30px);
-            -moz-transform: translateX(-30px);
-            -ms-transform: translateX(-30px);
-            -o-transform: translateX(-30px);
-            transform: translateX(-30px);
-            -webkit-transition: opacity 0.6s ease-out, -webkit-transform 0.6s ease-out, color 0.3s, padding-left 0.3s;
-            -moz-transition: opacity 0.6s ease-out, -moz-transform 0.6s ease-out, color 0.3s, padding-left 0.3s;
-            -ms-transition: opacity 0.6s ease-out, -ms-transform 0.6s ease-out, color 0.3s, padding-left 0.3s;
-            -o-transition: opacity 0.6s ease-out, -o-transform 0.6s ease-out, color 0.3s, padding-left 0.3s;
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out, color 0.3s, padding-left 0.3s;
-        }
-
-        .section-animate.visible .tech-features li {
-            opacity: 1;
-            -webkit-transform: translateX(0);
-            -moz-transform: translateX(0);
-            -ms-transform: translateX(0);
-            -o-transform: translateX(0);
-            transform: translateX(0);
-        }
-
-        .section-animate.visible .tech-features li:nth-child(1) {
-            -webkit-transition-delay: 0.4s;
-            -moz-transition-delay: 0.4s;
-            -ms-transition-delay: 0.4s;
-            -o-transition-delay: 0.4s;
-            transition-delay: 0.4s;
-        }
-
-        .section-animate.visible .tech-features li:nth-child(2) {
-            -webkit-transition-delay: 0.5s;
-            -moz-transition-delay: 0.5s;
-            -ms-transition-delay: 0.5s;
-            -o-transition-delay: 0.5s;
-            transition-delay: 0.5s;
-        }
-
-        .section-animate.visible .tech-features li:nth-child(3) {
-            -webkit-transition-delay: 0.6s;
-            -moz-transition-delay: 0.6s;
-            -ms-transition-delay: 0.6s;
-            -o-transition-delay: 0.6s;
-            transition-delay: 0.6s;
-        }
-
-        .section-animate.visible .tech-features li:nth-child(4) {
-            -webkit-transition-delay: 0.7s;
-            -moz-transition-delay: 0.7s;
-            -ms-transition-delay: 0.7s;
-            -o-transition-delay: 0.7s;
-            transition-delay: 0.7s;
-        }
-
-        .section-animate.visible .tech-features li:nth-child(5) {
-            -webkit-transition-delay: 0.8s;
-            -moz-transition-delay: 0.8s;
-            -ms-transition-delay: 0.8s;
-            -o-transition-delay: 0.8s;
-            transition-delay: 0.8s;
         }
 
         /* About Section */
@@ -1673,7 +1272,7 @@
                 <h3>Contato</h3>
                 <ul class="footer-links">
                     <li><a href="https://www.instagram.com/quimicas_mol/" target="_blank">Instagram</a></li>
-                    <li><a href="/cdn-cgi/l/email-protection#83e0ecedf7e2f7ecc3f2f6eaeeeae0e2f0eeecefade0ecee">Email</a></li>
+                    <li><a href="mailto:contato@quimicasmol.com">Email</a></li>
                     <li><a href="#inicio">Voltar ao Início</a></li>
                 </ul>
             </div>
@@ -1684,7 +1283,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Scroll suave
         function smoothScrollTo(targetPosition, duration) {
             const startPosition = window.pageYOffset;
@@ -1740,63 +1339,22 @@
         });
 
         // Animação de entrada das seções
-        // Detectar suporte ao IntersectionObserver
-        if ('IntersectionObserver' in window) {
-            // Navegadores modernos
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.section-animate').forEach(section => {
-                observer.observe(section);
-            });
-        } else {
-            // Fallback para navegadores antigos (IE, navegadores muito antigos)
-            function checkVisibility() {
-                var sections = document.querySelectorAll('.section-animate');
-                var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-                var windowTop = window.pageYOffset || document.documentElement.scrollTop;
-                var windowBottom = windowTop + windowHeight;
-
-                sections.forEach(function(section) {
-                    if (!section.classList.contains('visible')) {
-                        var rect = section.getBoundingClientRect();
-                        var elementTop = rect.top + windowTop;
-                        var elementBottom = elementTop + rect.height;
-                        var elementMiddle = elementTop + (rect.height / 2);
-
-                        // Elemento está visível se o meio dele está na viewport
-                        if (elementMiddle >= windowTop && elementMiddle <= windowBottom) {
-                            section.classList.add('visible');
-                        }
-                    }
-                });
-            }
-
-            // Verificar ao carregar a página
-            checkVisibility();
-
-            // Verificar ao rolar
-            var scrollTimeout;
-            window.addEventListener('scroll', function() {
-                if (scrollTimeout) {
-                    clearTimeout(scrollTimeout);
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-                scrollTimeout = setTimeout(checkVisibility, 50);
             });
+        }, observerOptions);
 
-            // Verificar ao redimensionar
-            window.addEventListener('resize', checkVisibility);
-        }
+        document.querySelectorAll('.section-animate').forEach(section => {
+            observer.observe(section);
+        });
 
         // Toggle Dark/Light Mode com CSS Variables
         const themeToggle = document.getElementById('themeToggle');
@@ -1813,4 +1371,11 @@
             
             // Salvar preferência
             if (rootElement.classList.contains('light-theme')) {
-                localStorage.setI
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
