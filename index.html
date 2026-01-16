@@ -45,15 +45,102 @@
             font-size: 16px;
         }
 
-        @media (min-width: 1920px) {
+        /* Telas 4K e Ultra Wide */
+        @media (min-width: 2560px) {
+            html {
+                font-size: 20px;
+            }
+        }
+
+        /* Monitores Full HD+ */
+        @media (min-width: 1920px) and (max-width: 2559px) {
             html {
                 font-size: 18px;
             }
         }
 
-        @media (min-width: 2560px) {
+        /* Notebooks grandes (15-17 polegadas) */
+        @media (min-width: 1680px) and (max-width: 1919px) {
             html {
-                font-size: 20px;
+                font-size: 16px;
+            }
+
+            .hero-container,
+            .products-container,
+            .benefits-container,
+            .technology-container {
+                max-width: 1500px;
+            }
+        }
+
+        /* Notebooks médios (14-15 polegadas - Full HD) */
+        @media (min-width: 1440px) and (max-width: 1679px) {
+            html {
+                font-size: 15px;
+            }
+
+            .hero-container,
+            .products-container,
+            .benefits-container,
+            .technology-container {
+                max-width: 1350px;
+            }
+
+            nav ul {
+                gap: 2.5rem;
+            }
+        }
+
+        /* Notebooks compactos (13-14 polegadas) */
+        @media (min-width: 1366px) and (max-width: 1439px) {
+            html {
+                font-size: 14.5px;
+            }
+
+            .hero-container,
+            .products-container,
+            .benefits-container,
+            .technology-container {
+                max-width: 1250px;
+            }
+
+            nav ul {
+                gap: 2.2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .products-grid,
+            .benefits-grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Notebooks HD (1280x720 / 1366x768) */
+        @media (min-width: 1280px) and (max-width: 1365px) {
+            html {
+                font-size: 14px;
+            }
+
+            .hero-container,
+            .products-container,
+            .benefits-container,
+            .technology-container {
+                max-width: 1150px;
+            }
+
+            nav ul {
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+
+            .section-title {
+                font-size: 2.7rem;
             }
         }
 
@@ -1177,6 +1264,10 @@
             .technology-container {
                 gap: 4rem;
             }
+
+            .header-container {
+                padding: 1.5rem 2.5rem;
+            }
         }
 
         @media (max-width: 1400px) {
@@ -1200,12 +1291,41 @@
             }
         }
 
+        /* Notebooks e Laptops - Transição para layout híbrido */
+        @media (max-width: 1280px) {
+            html {
+                font-size: 13.5px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .technology-container {
+                gap: 4rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.8rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1.8rem;
+            }
+        }
+
         @media (max-width: 1200px) {
             html {
                 font-size: 13px;
             }
 
-            .hero-container,
             .technology-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -1225,6 +1345,29 @@
 
             .technology-visual {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tablets Landscape e Notebooks pequenos */
+        @media (max-width: 1024px) {
+            html {
+                font-size: 12.5px;
+            }
+
+            .header-container {
+                padding: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
             }
         }
 
