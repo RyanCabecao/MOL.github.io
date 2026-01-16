@@ -42,6 +42,19 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
+            font-size: 16px;
+        }
+
+        @media (min-width: 1920px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 2560px) {
+            html {
+                font-size: 20px;
+            }
         }
 
         * {
@@ -1155,11 +1168,47 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1600px) {
+            html {
+                font-size: 15px;
+            }
+            
+            .hero-container,
+            .technology-container {
+                gap: 4rem;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            html {
+                font-size: 14px;
+            }
+
+            .header-container {
+                padding: 1.5rem 2rem;
+            }
+
+            .hero-container,
+            .products-container,
+            .benefits-container,
+            .technology-container {
+                max-width: 95%;
+            }
+
+            nav ul {
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 1200px) {
+            html {
+                font-size: 13px;
+            }
+
             .hero-container,
             .technology-container {
                 grid-template-columns: 1fr;
-                gap: 4rem;
+                gap: 3rem;
             }
 
             .benefits-grid {
@@ -1169,19 +1218,59 @@
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .technology-visual {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+            html {
+                font-size: 12px;
+            }
+
             .header-container {
-                padding: 1rem 1.5rem;
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
+                padding: 1.5rem 2rem;
             }
 
             nav ul {
                 gap: 1.5rem;
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 11px;
+            }
+
+            .header-container {
+                padding: 1rem 1.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.95rem;
             }
 
             .hero-content h1 {
@@ -1195,6 +1284,7 @@
             .products-grid,
             .benefits-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .footer-container {
@@ -1208,6 +1298,84 @@
 
             .cta-section h2 {
                 font-size: 2.2rem;
+            }
+
+            .theme-toggle {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            html {
+                font-size: 10px;
+            }
+
+            .header-container {
+                padding: 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-container {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .products, .benefits, .technology, .about {
+                padding: 4rem 1.5rem;
+            }
+
+            .cta-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .footer-container {
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            html {
+                font-size: 9px;
+            }
+
+            .logo-symbol {
+                width: 40px;
+                height: 40px;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+            }
+
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
             }
         }
     </style>
