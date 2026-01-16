@@ -426,19 +426,19 @@
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .products.visible .product-card:nth-child(1) {
+        .products.visible .products-grid .product-card:nth-child(1) {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.2s;
         }
 
-        .products.visible .product-card:nth-child(2) {
+        .products.visible .products-grid .product-card:nth-child(2) {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.4s;
         }
 
-        .products.visible .product-card:nth-child(3) {
+        .products.visible .products-grid .product-card:nth-child(3) {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.6s;
@@ -451,25 +451,25 @@
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .benefits.visible .benefit-item:nth-child(1) {
+        .benefits.visible .benefits-grid .benefit-item:nth-child(1) {
             opacity: 1;
             transform: translateY(0);
             transition-delay: 0.2s;
         }
 
-        .benefits.visible .benefit-item:nth-child(2) {
+        .benefits.visible .benefits-grid .benefit-item:nth-child(2) {
             opacity: 1;
             transform: translateY(0);
             transition-delay: 0.3s;
         }
 
-        .benefits.visible .benefit-item:nth-child(3) {
+        .benefits.visible .benefits-grid .benefit-item:nth-child(3) {
             opacity: 1;
             transform: translateY(0);
             transition-delay: 0.4s;
         }
 
-        .benefits.visible .benefit-item:nth-child(4) {
+        .benefits.visible .benefits-grid .benefit-item:nth-child(4) {
             opacity: 1;
             transform: translateY(0);
             transition-delay: 0.5s;
@@ -482,25 +482,25 @@
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .technology.visible .tech-stat:nth-child(1) {
+        .technology.visible .technology-visual .tech-stat:nth-child(1) {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.3s;
         }
 
-        .technology.visible .tech-stat:nth-child(2) {
+        .technology.visible .technology-visual .tech-stat:nth-child(2) {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.4s;
         }
 
-        .technology.visible .tech-stat:nth-child(3) {
+        .technology.visible .technology-visual .tech-stat:nth-child(3) {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.5s;
         }
 
-        .technology.visible .tech-stat:nth-child(4) {
+        .technology.visible .technology-visual .tech-stat:nth-child(4) {
             opacity: 1;
             transform: translateY(0) scale(1);
             transition-delay: 0.6s;
@@ -1226,6 +1226,7 @@
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#diferenciais">Diferenciais</a></li>
                     <li><a href="#tecnologia">Tecnologia</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
@@ -1314,7 +1315,8 @@
         </div>
     </section>
 
-    <section class="benefits section-animate">
+    <section id="diferenciais" class="benefits section-animate">
+        <span id="vantagens" style="position: absolute; top: -80px;"></span>
         <div class="benefits-container">
             <div style="text-align: center;">
                 <span class="section-label">Diferenciais</span>
@@ -1442,7 +1444,7 @@
                 <h3>Contato</h3>
                 <ul class="footer-links">
                     <li><a href="https://www.instagram.com/quimicas_mol/" target="_blank">Instagram</a></li>
-                    <li><a href="mailto:contato@quimicasmol.com">Email</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#42212d2c3623362d0233372b2f2b2123312f2d2e6c212d2f">Email</a></li>
                     <li><a href="#inicio">Voltar ao Início</a></li>
                 </ul>
             </div>
@@ -1453,7 +1455,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Scroll suave
         function smoothScrollTo(targetPosition, duration) {
             const startPosition = window.pageYOffset;
