@@ -907,6 +907,356 @@
             opacity: 0.5;
         }
 
+        /* Factory Section */
+        .factory {
+            background: var(--bg-primary);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .factory::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('Fabrica_MOL.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .factory::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.85) 0%, rgba(26, 31, 46, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .factory-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 7rem 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .factory-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .factory-content .section-label {
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid var(--accent-primary);
+        }
+
+        .factory-content h2 {
+            font-size: 3.5rem;
+            color: var(--text-heading);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .factory-content p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            line-height: 2;
+            margin-bottom: 3rem;
+            transition: color 0.3s ease;
+        }
+
+        .factory-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .factory-info-item {
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .factory-info-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        .factory-info-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .factory-info-icon {
+            font-size: 3rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .factory-info-item:hover .factory-info-icon {
+            transform: scale(1.1);
+        }
+
+        .factory-info-item h3 {
+            font-size: 1.5rem;
+            color: var(--text-heading);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .factory-info-item p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+
+        /* Animação para factory info items */
+        .factory-info-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .factory.visible .factory-info-item:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
+        .factory.visible .factory-info-item:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .factory.visible .factory-info-item:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        /* Fabrica Section */
+        .fabrica {
+            background: var(--bg-primary);
+            padding: 7rem 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        .fabrica::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('Fabrica_MOL.png') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .fabrica::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 50%, var(--bg-primary) 100%);
+            z-index: 0;
+        }
+
+        .fabrica-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fabrica-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .fabrica-text h2 {
+            font-size: 3rem;
+            color: var(--text-heading);
+            margin-bottom: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .fabrica-text p {
+            color: var(--text-secondary);
+            line-height: 2;
+            margin-bottom: 2rem;
+            font-size: 1.15rem;
+            transition: color 0.3s ease;
+        }
+
+        .fabrica-highlight {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fabrica-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        .fabrica-highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+            border-color: var(--accent-primary);
+        }
+
+        .fabrica-highlight h3 {
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .fabrica-highlight p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .fabrica-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 3px solid var(--border-color);
+            transition: all 0.4s ease;
+        }
+
+        .fabrica-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 70px var(--shadow-color);
+            border-color: var(--accent-primary);
+        }
+
+        .fabrica-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .fabrica-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .fabrica-feature {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fabrica-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .fabrica-feature:hover::before {
+            transform: scaleY(1);
+        }
+
+        .fabrica-feature:hover {
+            transform: translateX(5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .fabrica-feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .fabrica-feature:hover .fabrica-feature-icon {
+            transform: scale(1.1);
+        }
+
+        .fabrica-feature h4 {
+            color: var(--text-heading);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .fabrica-feature p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+            transition: color 0.3s ease;
+        }
+
         .technology-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -1475,6 +1825,19 @@
                 gap: 2rem;
             }
 
+            .factory-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .factory-content p {
+                font-size: 1.25rem;
+            }
+
+            .factory-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -1663,6 +2026,7 @@
                     <li><a href="#produtos">Produtos</a></li>
                     <li><a href="#diferenciais">Diferenciais</a></li>
                     <li><a href="#tecnologia">Tecnologia</a></li>
+                    <li><a href="#fabrica">Fábrica</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
@@ -1818,6 +2182,36 @@
                     <div class="tech-stat-value">Nano</div>
                     <div class="tech-stat-label">Tecnologia</div>
                     <div class="tech-stat-desc">Partículas avançadas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fabrica" class="factory section-animate">
+        <div class="factory-container">
+            <div class="factory-content">
+                <span class="section-label">Nossa Fábrica</span>
+                <h2>Produção de Excelência em Macaé</h2>
+                <p>Nossa fábrica está estrategicamente localizada no município de Macaé, Rio de Janeiro. Este local foi cuidadosamente escolhido como ponto estratégico para atender a demanda de diversos locais, aproveitando a infraestrutura de aeroportos e rotas logísticas conectadas da região.</p>
+                
+                <div class="factory-info">
+                    <div class="factory-info-item">
+                        <div class="factory-info-icon">📍</div>
+                        <h3>Localização Estratégica</h3>
+                        <p>Macaé, Rio de Janeiro - Acesso facilitado a todo o Brasil</p>
+                    </div>
+                    
+                    <div class="factory-info-item">
+                        <div class="factory-info-icon">✈️</div>
+                        <h3>Logística Avançada</h3>
+                        <p>Próximo a aeroportos e rotas comerciais importantes</p>
+                    </div>
+                    
+                    <div class="factory-info-item">
+                        <div class="factory-info-icon">🏭</div>
+                        <h3>Produção de Qualidade</h3>
+                        <p>Tecnologia de ponta e processos certificados</p>
+                    </div>
                 </div>
             </div>
         </div>
