@@ -930,8 +930,13 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.75;
+            opacity: 0;
             z-index: 0;
+            transition: opacity 1.2s ease-out;
+        }
+
+        .factory.visible::before {
+            opacity: 0.75;
         }
 
         .factory::after {
@@ -943,6 +948,12 @@
             bottom: 0;
             background: linear-gradient(135deg, rgba(15, 20, 25, 0.65) 0%, rgba(26, 31, 46, 0.65) 100%);
             z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-out 0.2s;
+        }
+
+        .factory.visible::after {
+            opacity: 1;
         }
 
         .factory-container {
