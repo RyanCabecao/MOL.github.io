@@ -40,7 +40,7 @@
         }
 
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
             scroll-padding-top: 80px;
             font-size: 12.96px;
         }
@@ -2309,7 +2309,7 @@
                 <h3>Contato</h3>
                 <ul class="footer-links">
                     <li><a href="https://www.instagram.com/quimicas_mol/" target="_blank">Instagram</a></li>
-                    <li><a href="/cdn-cgi/l/email-protection#284b47465c495c4768595d4145414b495b454744064b4745064a5a">Email</a></li>
+                    <li><a href="mailto:contato@quimicasmol.com">Email</a></li>
                     <li><a href="#inicio">Voltar ao Início</a></li>
                 </ul>
             </div>
@@ -2320,31 +2320,36 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Scroll suave
+    <script>
+        // Função de scroll suave melhorada
         function smoothScrollTo(targetPosition, duration) {
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
             let startTime = null;
 
+            function easeInOutCubic(t) {
+                return t < 0.5
+                    ? 4 * t * t * t
+                    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            }
+
             function animation(currentTime) {
                 if (startTime === null) startTime = currentTime;
                 const timeElapsed = currentTime - startTime;
-                const run = ease(timeElapsed, startPosition, distance, duration);
-                window.scrollTo(0, run);
-                if (timeElapsed < duration) requestAnimationFrame(animation);
-            }
-
-            function ease(t, b, c, d) {
-                t /= d / 2;
-                if (t < 1) return c / 2 * t * t + b;
-                t--;
-                return -c / 2 * (t * (t - 2) - 1) + b;
+                const progress = Math.min(timeElapsed / duration, 1);
+                const ease = easeInOutCubic(progress);
+                
+                window.scrollTo(0, startPosition + distance * ease);
+                
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
             }
 
             requestAnimationFrame(animation);
         }
 
+        // Aguardar carregamento completo
         window.addEventListener('load', function() {
             const links = document.querySelectorAll('a[href^="#"]');
             
@@ -2352,14 +2357,19 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
+                    
                     if (targetId === '#') {
-                        smoothScrollTo(0, 1000);
+                        smoothScrollTo(0, 1200);
                         return;
                     }
+                    
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        const targetPosition = targetElement.offsetTop - 80;
-                        smoothScrollTo(targetPosition, 1000);
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        smoothScrollTo(offsetPosition, 1200);
                     }
                 });
             });
@@ -2375,28 +2385,24 @@
             }
         });
 
-        // Animação de entrada das seções - MELHORADO
+        // Animação de entrada das seções
         const observerOptions = {
-            threshold: 0.15, // Elemento precisa estar 15% visível para disparar
-            rootMargin: '0px 0px -50px 0px' // Margem negativa na parte inferior
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Opcional: parar de observar após animação
-                    // observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observar todas as seções animadas
         document.querySelectorAll('.section-animate').forEach(section => {
             observer.observe(section);
         });
 
-        // Adicionar classe visible aos elementos já visíveis no carregamento
         window.addEventListener('load', function() {
             document.querySelectorAll('.section-animate').forEach(section => {
                 const rect = section.getBoundingClientRect();
@@ -2407,11 +2413,10 @@
             });
         });
 
-        // Toggle Dark/Light Mode com CSS Variables
+        // Toggle Dark/Light Mode
         const themeToggle = document.getElementById('themeToggle');
         const rootElement = document.documentElement;
 
-        // Verificar se há preferência salva
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             rootElement.classList.add('light-theme');
@@ -2420,7 +2425,6 @@
         themeToggle.addEventListener('click', function() {
             rootElement.classList.toggle('light-theme');
             
-            // Salvar preferência
             if (rootElement.classList.contains('light-theme')) {
                 localStorage.setItem('theme', 'light');
             } else {
