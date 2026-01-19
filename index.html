@@ -440,7 +440,7 @@
         }
 
         .hero-image img {
-            width: 75%;
+            width: 100%;
             height: 100%;
             max-height: none;
             object-fit: contain;
@@ -2054,8 +2054,8 @@
         /* Botão de Cadastro Flutuante */
         .cadastro-button {
             position: fixed;
-            bottom: 30px;
-            right: 110px;
+            bottom: 110px;
+            right: 30px;
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
             color: white;
             padding: 1rem 2rem;
@@ -2302,8 +2302,8 @@
         /* Responsivo */
         @media (max-width: 768px) {
             .cadastro-button {
-                bottom: 30px;
-                right: 90px;
+                bottom: 90px;
+                right: 20px;
                 padding: 0.9rem 1.5rem;
                 font-size: 1rem;
             }
@@ -2332,13 +2332,13 @@
 
         @media (max-width: 576px) {
             .cadastro-button {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 padding: 0;
                 border-radius: 50%;
                 justify-content: center;
-                bottom: 30px;
-                right: 80px;
+                bottom: 80px;
+                right: 15px;
             }
 
             .cadastro-button span {
@@ -2613,15 +2613,16 @@
                         </svg>
                     </a>
                 
-                    <a href="mailto:mol.quimics@proton.me" aria-label="Email" title="Enviar Email">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mol.quimics@proton.me" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Enviar Email">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                         </svg>
                     </a>
-                </div>
+                
                 <p class="footer-email">
-                    📧 <a href="mailto:mol.quimics@proton.me">mol.quimics@proton.me</a>
+                    📧 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mol.quimics@proton.me" target="_blank" rel="noopener noreferrer">mol.quimics@proton.me</a>
                 </p>
+            </div>
             </div>
             <div class="footer-section">
                 <h3>Produtos</h3>
@@ -2645,7 +2646,7 @@
                 <h3>Contato</h3>
                 <ul class="footer-links">
                     <li><a href="https://www.instagram.com/quimicas_mol/" target="_blank">Instagram</a></li>
-                    <li><a href="mailto:mol.quimics@proton.me">Email</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=mol.quimics@proton.me" target="_blank" rel="noopener noreferrer">Email</a></li>
                     <li><a href="#inicio">Voltar ao Início</a></li>
                 </ul>
             </div>
@@ -2757,15 +2758,10 @@
         const themeToggle = document.getElementById('themeToggle');
         const rootElement = document.documentElement;
 
-        // Definir modo escuro como padrão
-        // Verificar se há preferência salva para modo claro
+        // Verificar se há preferência salva
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             rootElement.classList.add('light-theme');
-        }
-        // Se não houver preferência salva, garantir que está em modo escuro
-        if (!savedTheme) {
-            localStorage.setItem('theme', 'dark');
         }
 
         themeToggle.addEventListener('click', function() {
@@ -2778,196 +2774,6 @@
                 localStorage.setItem('theme', 'dark');
             }
         });
-
-
-        // Sistema de Cadastro - Aguardar carregamento do DOM
-        window.addEventListener('load', function() {
-            // Sistema de Cadastro
-            const cadastroButton = document.getElementById('cadastroButton');
-            const modalCadastro = document.getElementById('modalCadastro');
-            const modalClose = document.getElementById('modalClose');
-            const formTabs = document.querySelectorAll('.form-tab');
-            const formContents = document.querySelectorAll('.form-content');
-            const formEmpresa = document.getElementById('formEmpresa');
-            const formProfissional = document.getElementById('formProfissional');
-            const successMessage = document.getElementById('successMessage');
-
-            // Abrir modal
-            cadastroButton.addEventListener('click', function() {
-                modalCadastro.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-
-            // Fechar modal
-            modalClose.addEventListener('click', function() {
-                closeModal();
-            });
-
-            // Fechar ao clicar fora
-            modalCadastro.addEventListener('click', function(e) {
-                if (e.target === modalCadastro) {
-                        closeModal();
-                }
-            });
-
-            // Fechar com ESC
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modalCadastro.classList.contains('active')) {
-                        closeModal();
-                }
-            });
-
-            function closeModal() {
-                modalCadastro.classList.remove('active');
-                document.body.style.overflow = '';
-                
-                // Reset após 300ms (tempo da animação)
-                setTimeout(function() {
-                        successMessage.classList.remove('active');
-                        formContents.forEach(function(content) {
-                            if (content.id === 'form-empresa') {
-                                    content.classList.add('active');
-                            } else {
-                                    content.classList.remove('active');
-                            }
-                        });
-                        formTabs[0].classList.add('active');
-                        for(let i = 1; i < formTabs.length; i++) {
-                            formTabs[i].classList.remove('active');
-                        }
-                        formEmpresa.reset();
-                        formProfissional.reset();
-                }, 300);
-            }
-
-            // Troca de abas
-            formTabs.forEach(function(tab) {
-                tab.addEventListener('click', function() {
-                        const targetTab = this.getAttribute('data-tab');
-                        
-                        // Remove active de todas as abas
-                        formTabs.forEach(function(t) {
-                            t.classList.remove('active');
-                        });
-                        
-                        // Adiciona active na aba clicada
-                        this.classList.add('active');
-                        
-                        // Mostra o conteúdo correspondente
-                        formContents.forEach(function(content) {
-                            content.classList.remove('active');
-                            if (content.id === 'form-' + targetTab) {
-                                    content.classList.add('active');
-                            }
-                        });
-                });
-            });
-
-            // Máscaras de input
-            function maskCNPJ(value) {
-                return value
-                        .replace(/\D/g, '')
-                        .replace(/(\d{2})(\d)/, '$1.$2')
-                        .replace(/(\d{3})(\d)/, '$1.$2')
-                        .replace(/(\d{3})(\d)/, '$1/$2')
-                        .replace(/(\d{4})(\d)/, '$1-$2')
-                        .replace(/(-\d{2})\d+?$/, '$1');
-            }
-
-            function maskCPF(value) {
-                return value
-                        .replace(/\D/g, '')
-                        .replace(/(\d{3})(\d)/, '$1.$2')
-                        .replace(/(\d{3})(\d)/, '$1.$2')
-                        .replace(/(\d{3})(\d)/, '$1-$2')
-                        .replace(/(-\d{2})\d+?$/, '$1');
-            }
-
-            function maskPhone(value) {
-                value = value.replace(/\D/g, '');
-                if (value.length <= 10) {
-                        return value
-                            .replace(/(\d{2})(\d)/, '($1) $2')
-                            .replace(/(\d{4})(\d)/, '$1-$2');
-                } else {
-                        return value
-                            .replace(/(\d{2})(\d)/, '($1) $2')
-                            .replace(/(\d{5})(\d)/, '$1-$2')
-                            .replace(/(-\d{4})\d+?$/, '$1');
-                }
-            }
-
-            // Aplicar máscaras
-            document.querySelectorAll('input[name="cnpj"]').forEach(function(input) {
-                input.addEventListener('input', function(e) {
-                        e.target.value = maskCNPJ(e.target.value);
-                });
-            });
-
-            document.querySelectorAll('input[name="cpf"]').forEach(function(input) {
-                input.addEventListener('input', function(e) {
-                        e.target.value = maskCPF(e.target.value);
-                });
-            });
-
-            document.querySelectorAll('input[name="telefone"]').forEach(function(input) {
-                input.addEventListener('input', function(e) {
-                        e.target.value = maskPhone(e.target.value);
-                });
-            });
-
-            // Submit Empresa
-            formEmpresa.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Coletar dados
-                const formData = new FormData(formEmpresa);
-                const data = {};
-                formData.forEach((value, key) => {
-                        data[key] = value;
-                });
-                
-                // Simular envio (aqui você conectaria com seu backend)
-                console.log('Dados da Empresa:', data);
-                
-                // Mostrar mensagem de sucesso
-                document.getElementById('form-empresa').style.display = 'none';
-                successMessage.classList.add('active');
-                
-                // Fechar após 3 segundos
-                setTimeout(function() {
-                        closeModal();
-                        document.getElementById('form-empresa').style.display = 'block';
-                }, 3000);
-            });
-
-            // Submit Profissional
-            formProfissional.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Coletar dados
-                const formData = new FormData(formProfissional);
-                const data = {};
-                formData.forEach((value, key) => {
-                        data[key] = value;
-                });
-                
-                // Simular envio (aqui você conectaria com seu backend)
-                console.log('Dados do Profissional:', data);
-                
-                // Mostrar mensagem de sucesso
-                document.getElementById('form-profissional').style.display = 'none';
-                successMessage.classList.add('active');
-                
-                // Fechar após 3 segundos
-                setTimeout(function() {
-                        closeModal();
-                        document.getElementById('form-profissional').style.display = 'block';
-                }, 3000);
-            });
-        });
-
-
     </script>
 
     <!-- Botão de Cadastro Flutuante -->
@@ -3106,3 +2912,13 @@
             <div class="success-message" id="successMessage">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#2ecc71">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <h3>Cadastro Enviado com Sucesso!</h3>
+                <p>Entraremos em contato em breve.</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
