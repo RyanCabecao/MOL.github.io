@@ -339,7 +339,7 @@
             margin: 0 auto;
             padding: 6rem 3rem;
             display: grid;
-            grid-template-columns: 1.5fr 0.8fr;
+            grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
             position: relative;
@@ -1801,7 +1801,13 @@
 
         
 
-        @media (max-width: 768px) {
+        
+        @media (max-width: 900px) {
+            .hero-image {
+                display: none;
+            }
+        }
+@media (max-width: 768px) {
             html {
                 font-size: 14px;
             }
