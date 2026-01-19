@@ -440,7 +440,7 @@
         }
 
         .hero-image img {
-            width: 100%;
+            width: 75%;
             height: 100%;
             max-height: none;
             object-fit: contain;
@@ -2054,8 +2054,8 @@
         /* Botão de Cadastro Flutuante */
         .cadastro-button {
             position: fixed;
-            bottom: 110px;
-            right: 30px;
+            bottom: 30px;
+            right: 110px;
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
             color: white;
             padding: 1rem 2rem;
@@ -2657,7 +2657,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Função de scroll suave melhorada
         function smoothScrollTo(targetPosition, duration) {
             const startPosition = window.pageYOffset;
@@ -2773,6 +2773,171 @@
             } else {
                 localStorage.setItem('theme', 'dark');
             }
+        });
+
+
+        // Sistema de Cadastro
+        window.addEventListener('load', function() {
+            const cadastroButton = document.getElementById('cadastroButton');
+            const modalCadastro = document.getElementById('modalCadastro');
+            const modalClose = document.getElementById('modalClose');
+            const formTabs = document.querySelectorAll('.form-tab');
+            const formContents = document.querySelectorAll('.form-content');
+            const formEmpresa = document.getElementById('formEmpresa');
+            const formProfissional = document.getElementById('formProfissional');
+            const successMessage = document.getElementById('successMessage');
+
+            if (!cadastroButton || !modalCadastro) {
+                console.error('Elementos do cadastro não encontrados');
+                return;
+            }
+
+            // Abrir modal
+            cadastroButton.addEventListener('click', function() {
+                modalCadastro.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Fechar modal
+            modalClose.addEventListener('click', function() {
+                closeModal();
+            });
+
+            // Fechar ao clicar fora
+            modalCadastro.addEventListener('click', function(e) {
+                if (e.target === modalCadastro) {
+                    closeModal();
+                }
+            });
+
+            // Fechar com ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalCadastro.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            function closeModal() {
+                modalCadastro.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                setTimeout(function() {
+                    successMessage.classList.remove('active');
+                    formContents.forEach(function(content) {
+                        if (content.id === 'form-empresa') {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                    if (formTabs.length > 0) {
+                        formTabs[0].classList.add('active');
+                        for(let i = 1; i < formTabs.length; i++) {
+                            formTabs[i].classList.remove('active');
+                        }
+                    }
+                    formEmpresa.reset();
+                    formProfissional.reset();
+                }, 300);
+            }
+
+            // Troca de abas
+            formTabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    formTabs.forEach(function(t) {
+                        t.classList.remove('active');
+                    });
+                    
+                    this.classList.add('active');
+                    
+                    formContents.forEach(function(content) {
+                        content.classList.remove('active');
+                        if (content.id === 'form-' + targetTab) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Máscaras
+            function maskCNPJ(value) {
+                return value
+                    .replace(/\D/g, '')
+                    .replace(/(\d{2})(\d)/, '$1.$2')
+                    .replace(/(\d{3})(\d)/, '$1.$2')
+                    .replace(/(\d{3})(\d)/, '$1/$2')
+                    .replace(/(\d{4})(\d)/, '$1-$2')
+                    .replace(/(-\d{2})\d+?$/, '$1');
+            }
+
+            function maskCPF(value) {
+                return value
+                    .replace(/\D/g, '')
+                    .replace(/(\d{3})(\d)/, '$1.$2')
+                    .replace(/(\d{3})(\d)/, '$1.$2')
+                    .replace(/(\d{3})(\d)/, '$1-$2')
+                    .replace(/(-\d{2})\d+?$/, '$1');
+            }
+
+            function maskPhone(value) {
+                value = value.replace(/\D/g, '');
+                if (value.length <= 10) {
+                    return value.replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{4})(\d)/, '$1-$2');
+                } else {
+                    return value.replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2').replace(/(-\d{4})\d+?$/, '$1');
+                }
+            }
+
+            // Aplicar máscaras
+            document.querySelectorAll('input[name="cnpj"]').forEach(function(input) {
+                input.addEventListener('input', function(e) {
+                    e.target.value = maskCNPJ(e.target.value);
+                });
+            });
+
+            document.querySelectorAll('input[name="cpf"]').forEach(function(input) {
+                input.addEventListener('input', function(e) {
+                    e.target.value = maskCPF(e.target.value);
+                });
+            });
+
+            document.querySelectorAll('input[name="telefone"]').forEach(function(input) {
+                input.addEventListener('input', function(e) {
+                    e.target.value = maskPhone(e.target.value);
+                });
+            });
+
+            // Submit Empresa
+            formEmpresa.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(formEmpresa);
+                const data = {};
+                formData.forEach((value, key) => { data[key] = value; });
+                console.log('Dados da Empresa:', data);
+                document.getElementById('form-empresa').style.display = 'none';
+                successMessage.classList.add('active');
+                setTimeout(function() {
+                    closeModal();
+                    document.getElementById('form-empresa').style.display = 'block';
+                }, 3000);
+            });
+
+            // Submit Profissional
+            formProfissional.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(formProfissional);
+                const data = {};
+                formData.forEach((value, key) => { data[key] = value; });
+                console.log('Dados do Profissional:', data);
+                document.getElementById('form-profissional').style.display = 'none';
+                successMessage.classList.add('active');
+                setTimeout(function() {
+                    closeModal();
+                    document.getElementById('form-profissional').style.display = 'block';
+                }, 3000);
+            });
         });
     </script>
 
@@ -2911,7 +3076,7 @@
             <!-- Mensagem de Sucesso -->
             <div class="success-message" id="successMessage">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#2ecc71">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-99z"/>
                 </svg>
                 <h3>Cadastro Enviado com Sucesso!</h3>
                 <p>Entraremos em contato em breve.</p>
@@ -2919,6 +3084,111 @@
         </div>
     </div>
 
+    <script>
+        // Scroll suave
+        function smoothScrollTo(targetPosition, duration) {
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
 
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        window.addEventListener('load', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') {
+                        smoothScrollTo(0, 1000);
+                        return;
+                    }
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const targetPosition = targetElement.offsetTop - 80;
+                        smoothScrollTo(targetPosition, 1000);
+                    }
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animação de entrada das seções
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-animate').forEach(section => {
+            observer.observe(section);
+        });
+
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.section-animate').forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (isVisible) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+
+        // Toggle Dark/Light Mode
+        const themeToggle = document.getElementById('themeToggle');
+        const rootElement = document.documentElement;
+
+        // Definir modo escuro como padrão
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            rootElement.classList.add('light-theme');
+        }
+        if (!savedTheme) {
+            localStorage.setItem('theme', 'dark');
+        }
+
+        themeToggle.addEventListener('click', function() {
+            rootElement.classList.toggle('light-theme');
+            
+            if (rootElement.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
