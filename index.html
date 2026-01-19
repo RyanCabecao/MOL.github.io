@@ -440,7 +440,7 @@
         }
 
         .hero-image img {
-            width: 100%;
+            width: 75%;
             height: 100%;
             max-height: none;
             object-fit: contain;
@@ -2727,10 +2727,15 @@
         const themeToggle = document.getElementById('themeToggle');
         const rootElement = document.documentElement;
 
-        // Verificar se há preferência salva
+        // Definir modo escuro como padrão
+        // Verificar se há preferência salva para modo claro
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             rootElement.classList.add('light-theme');
+        }
+        // Se não houver preferência salva, garantir que está em modo escuro
+        if (!savedTheme) {
+            localStorage.setItem('theme', 'dark');
         }
 
         themeToggle.addEventListener('click', function() {
