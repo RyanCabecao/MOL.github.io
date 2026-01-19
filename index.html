@@ -2350,6 +2350,27 @@
             }
         }
 
+    
+        /* Email no Footer */
+        .footer-email {
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .footer-email a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-email a:hover {
+            color: var(--accent-secondary);
+            transform: translateX(3px);
+        }
+
     </style>
 </head>
 <body>
@@ -2598,6 +2619,9 @@
                         </svg>
                     </a>
                 </div>
+                <p class="footer-email">
+                    📧 <a href="mailto:mol.quimics@proton.me">mol.quimics@proton.me</a>
+                </p>
             </div>
             <div class="footer-section">
                 <h3>Produtos</h3>
@@ -2632,7 +2656,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Função de scroll suave melhorada
         function smoothScrollTo(targetPosition, duration) {
             const startPosition = window.pageYOffset;
@@ -3082,13 +3106,3 @@
             <div class="success-message" id="successMessage">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#2ecc71">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                <h3>Cadastro Enviado com Sucesso!</h3>
-                <p>Entraremos em contato em breve.</p>
-            </div>
-        </div>
-    </div>
-
-
-</body>
-</html>
