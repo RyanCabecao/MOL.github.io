@@ -1353,7 +1353,7 @@
         }
 
         .tech-features li::after {
-            content: '✓';
+            content: 'âœ“';
             position: absolute;
             left: 5px;
             top: 50%;
@@ -1712,6 +1712,10 @@
                 font-size: 11.88px;
             }
 
+            .hero-image img {
+                max-width: 28%;
+            }
+
             .technology-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -1740,6 +1744,10 @@
                 font-size: 11.88px;
             }
 
+            .hero-image img {
+                max-width: 22%;
+            }
+
             .header-container {
                 padding: 1.5rem;
             }
@@ -1760,6 +1768,10 @@
         @media (max-width: 992px) {
             html {
                 font-size: 11.88px;
+            }
+
+            .hero-image img {
+                max-width: 18%;
             }
 
             .header-container {
@@ -1793,6 +1805,10 @@
                 font-size: 14px;
             }
 
+            .hero-image {
+                display: none;
+            }
+
             .header-container {
                 padding: 1rem 1.5rem;
             }
@@ -1808,11 +1824,6 @@
 
             .hero-content p {
                 font-size: 1.3rem;
-            }
-
-            .hero-image img {
-                max-width: 42%;
-                margin: 0 auto;
             }
 
             .section-title {
@@ -1938,10 +1949,6 @@
                 font-size: 1.25rem;
             }
 
-            .hero-image img {
-                max-width: 39.375%;
-            }
-
             .section-title {
                 font-size: 2.2rem;
             }
@@ -2015,10 +2022,6 @@
                 font-size: 1.15rem;
             }
 
-            .hero-image img {
-                max-width: 36.75%;
-            }
-
             .section-title {
                 font-size: 2rem;
             }
@@ -2089,7 +2092,7 @@
                 <p>Desenvolvemos soluções de alta tecnologia que unem ciência e cuidado humano para proporcionar mais conforto e qualidade de vida a usuários de órteses articulares.</p>
                 <a href="#produtos" class="cta-button">
                     <span>Conheça Nossos Produtos</span>
-                    <span>→</span>
+                    <span>â†’</span>
                 </a>
             </div>
             <div class="hero-image">
@@ -2188,7 +2191,7 @@
             <div class="technology-content">
                 <span class="section-label">Nossa Ciência</span>
                 <h2>Tecnologia Nano Estruturada de Ponta</h2>
-                <p>Nossa tecnologia exclusiva utiliza nanopartículas especialmente desenvolvidas para proporcionar lubrificação superior e proteção prolongada às articulações de pacientes que utilizam órteses.</p>
+                <p>Nossa tecnologia exclusiva utiliza nanopartículas especialmente desenvolvidas para proporcionar lubrificação superior e proteção prolongada Á s articulações de pacientes que utilizam órteses.</p>
                 <p>Através de anos de pesquisa e desenvolvimento, criamos uma linha de produtos que combina eficácia científica comprovada com o máximo cuidado para com o paciente.</p>
                 <ul class="tech-features">
                     <li>Redução de atrito em até 85% para movimento mais fluido</li>
@@ -2232,19 +2235,19 @@
                 
                 <div class="factory-info">
                     <div class="factory-info-item">
-                        <div class="factory-info-icon">📍</div>
+                        <div class="factory-info-icon">ðŸ“</div>
                         <h3>Localização Estratégica</h3>
                         <p>Macaé, Rio de Janeiro - Acesso facilitado a todo o Brasil</p>
                     </div>
                     
                     <div class="factory-info-item">
-                        <div class="factory-info-icon">✈️</div>
+                        <div class="factory-info-icon">âœˆï¸</div>
                         <h3>Logística Avançada</h3>
                         <p>Próximo a aeroportos e rotas comerciais importantes</p>
                     </div>
                     
                     <div class="factory-info-item">
-                        <div class="factory-info-icon">🏭</div>
+                        <div class="factory-info-icon">ðŸ­</div>
                         <h3>Produção de Qualidade</h3>
                         <p>Tecnologia de ponta e processos certificados</p>
                     </div>
@@ -2259,7 +2262,7 @@
             <p>Descubra como nossas soluções inovadoras podem ajudar você a viver com mais conforto, mobilidade e liberdade</p>
             <a href="https://www.instagram.com/quimicas_mol/" target="_blank" class="cta-button-secondary">
                 <span>Entre em Contato Conosco</span>
-                <span class="arrow">→</span>
+                <span class="arrow">â†’</span>
             </a>
         </div>
     </section>
@@ -2309,18 +2312,18 @@
                 <h3>Contato</h3>
                 <ul class="footer-links">
                     <li><a href="https://www.instagram.com/quimicas_mol/" target="_blank">Instagram</a></li>
-                    <li><a href="mailto:contato@quimicasmol.com">Email</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#284b47465c495c4768595d4145414b495b454744064b4745064a5a">Email</a></li>
                     <li><a href="#inicio">Voltar ao Início</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Químicas MOL. Todos os direitos reservados.</p>
+            <p>Â© 2026 Químicas MOL. Todos os direitos reservados.</p>
             <p>Desenvolvendo soluções para o seu bem-estar através da nanotecnologia</p>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Função de scroll suave melhorada
         function smoothScrollTo(targetPosition, duration) {
             const startPosition = window.pageYOffset;
@@ -2385,24 +2388,28 @@
             }
         });
 
-        // Animação de entrada das seções
+        // Animação de entrada das seções - MELHORADO
         const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15, // Elemento precisa estar 15% visível para disparar
+            rootMargin: '0px 0px -50px 0px' // Margem negativa na parte inferior
         };
 
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // Opcional: parar de observar após animação
+                    // observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
+        // Observar todas as seções animadas
         document.querySelectorAll('.section-animate').forEach(section => {
             observer.observe(section);
         });
 
+        // Adicionar classe visible aos elementos já visíveis no carregamento
         window.addEventListener('load', function() {
             document.querySelectorAll('.section-animate').forEach(section => {
                 const rect = section.getBoundingClientRect();
@@ -2413,10 +2420,11 @@
             });
         });
 
-        // Toggle Dark/Light Mode
+        // Toggle Dark/Light Mode com CSS Variables
         const themeToggle = document.getElementById('themeToggle');
         const rootElement = document.documentElement;
 
+        // Verificar se há preferência salva
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             rootElement.classList.add('light-theme');
@@ -2425,6 +2433,7 @@
         themeToggle.addEventListener('click', function() {
             rootElement.classList.toggle('light-theme');
             
+            // Salvar preferência
             if (rootElement.classList.contains('light-theme')) {
                 localStorage.setItem('theme', 'light');
             } else {
